@@ -32,7 +32,7 @@ app.get("/",(req,res)=>{
 })
 
 app.listen(port,()=>{
-    console.log(`Server Started on http://localhost:${port}`)
+    console.log(`Server Started on https://food-delindra.netlify.app/`)
 })
 
 // mongodb+srv://indravip3:indraKP77@cluster0.nxgpqcn.mongodb.net/?
