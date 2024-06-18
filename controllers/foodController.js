@@ -43,20 +43,6 @@ const listFood = async (req,res) => {
 }
 
 
-// one food item
-const listOneFood = async (req,res) => {
-    const searchName = req.params.name;
-    try {
-        const foods = await foodModel.find({name: {$regex: searchName, $options: 'i'}});
-        res.json({
-            success:true,
-            data:foods
-        })
-    } catch (error) {
-        console.log(error);
-        res.json({success:false,message:"Error"})
-    }
-}
 
 // remove food item
 
@@ -75,4 +61,4 @@ const removeFood = async (req,res) => {
 
 
 
-export {addFood,listFood,removeFood,listOneFood}
+export {addFood,listFood,removeFood}

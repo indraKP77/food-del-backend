@@ -15,7 +15,6 @@ const port = process.env.PORT|| 4000
 
 // middleware
 app.use(express.json())
-app.use(bodyParser.json())
 app.use(cors())
 
 // db connection
@@ -31,6 +30,8 @@ app.use("/api/order",orderRouter)
 app.get("/",(req,res)=>{
     res.send("Tomato API ")
 })
+
+
 
 app.listen(port,()=>{
     console.log(`Server Started on port ${port}`)
