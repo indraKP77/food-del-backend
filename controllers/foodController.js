@@ -1,7 +1,11 @@
 import { log } from "console";
 import foodModel from "../models/foodModel.js";
 import fs from 'fs'
+import express from "express"
+import bodyParser from "body-parser";
 
+const app = express()
+app.use(bodyParser.json())
 
 // add food item
 const addFood = async (req,res) => {
@@ -38,6 +42,22 @@ const listFood = async (req,res) => {
     }
 }
 
+
+// one food item
+const listOneFood = async (req,res) => {
+    const searchName = req.params.name;
+    try {
+        const foods = await foodModel.find({name: {$regex: searchName, $options: 'i'}});
+        res.json({
+            success:true,
+            data:foods
+        })
+    } catch (error) {
+        console.log(error);
+        res.json({success:false,message:"Error"})
+    }
+}
+
 // remove food item
 
 const removeFood = async (req,res) => {
@@ -53,4 +73,6 @@ const removeFood = async (req,res) => {
     }
 }
 
-export {addFood,listFood,removeFood}
+
+
+export {addFood,listFood,removeFood,listOneFood}
